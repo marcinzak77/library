@@ -5,19 +5,46 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Entity(name = "BOOK")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long titleId;
-    @Column(name = "author")
+    @Column(name = "AUTHOR")
     private String author;
-    @Column(name = "title")
+    @Column(name = "TITLE")
     private String title;
-    @Column(name = "releasedate")
+    @Column(name = "RELEASE_DATE")
     private int releaseDate;
+
+    @OneToMany(
+            targetEntity = BookCopies.class,
+            mappedBy = "titleId",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    private List<BookCopies> bookCopies;
+
+    public Book(String author, String title, int releaseDate) {
+        this.author = author;
+        this.title = title;
+        this.releaseDate = releaseDate;
+    }
+
+    public void setBookCopies(List<BookCopies> bookCopies) {
+        this.bookCopies = bookCopies;
+    }
+
+    public List<BookCopies> getBookCopies() {
+        return bookCopies;
+    }
+
+    public long getTitleId() {
+        return titleId;
+    }
 }

@@ -15,12 +15,19 @@ import java.time.LocalDate;
 public class BookHire {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private long hireId;
+    @Column(name = "BOOK_ID")
     private long bookId;
-    @Column(name = "readerid")
-    private long resaderId;
-    @Column(name = "dateofrental")
+    @Column(name = "READER_ID")
+    private long readerId;
+    @Column(name = "DATE_OF_RENTAL")
     private LocalDate dateOfRental;
-    @Column(name = "dateofreturn")
+    @Column(name = "DATE_OF_RETURN")
     private LocalDate dateOfReturn;
 
+    public BookHire(long bookId, long readerId, LocalDate dateOfRental) {
+        this.bookId = bookId;
+        this.readerId = readerId;
+        this.dateOfRental = dateOfRental;
+    }
 }

@@ -42,7 +42,7 @@ public class LibraryDaoTestSuite {
         bookTitleOne.setBookCopies(bookCopies);
         //When
         bookDao.save(bookTitleOne);
-        int idBookOne = (int) bookTitleOne.getTitleId();
+        int idBookOne = bookTitleOne.getTitleId();
         bookCopiesDao.save(bookCopyOne);
         int bookCopiesIdOne = (int) bookCopyOne.getBookId();
         bookCopiesDao.save(bookCopyTwo);

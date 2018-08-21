@@ -14,7 +14,7 @@ import java.util.List;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long titleId;
+    private int titleId;
     @Column(name = "AUTHOR")
     private String author;
     @Column(name = "TITLE")
@@ -44,7 +44,7 @@ public class Book {
         return bookCopies;
     }
 
-    public long getTitleId() {
+    public int getTitleId() {
         return titleId;
     }
 }

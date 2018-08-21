@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookRentDto {
-    private long bookId;
-    private long readerId;
+    private int bookId;
+    private int readerId;
     private LocalDate dateOfRental;
 }

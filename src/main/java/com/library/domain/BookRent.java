@@ -25,7 +25,7 @@ public class BookRent {
     @Column(name = "DATE_OF_RETURN")
     private LocalDate dateOfReturn;
 
-    public BookRent(long bookId, long readerId, LocalDate dateOfRental) {
+    public BookRent(int bookId, int readerId, LocalDate dateOfRental) {
         this.bookId = bookId;
         this.readerId = readerId;
         this.dateOfRental = dateOfRental;

@@ -15,7 +15,7 @@ import java.util.Date;
 public class Reader {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long readerId;
+    private int readerId;
     @Column(name = "NAME")
     private String name;
     @Column(name = "SURNAME")

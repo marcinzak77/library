@@ -1,5 +1,6 @@
 package com.library.service;
 
+import com.library.domain.Book;
 import com.library.domain.dao.BookDao;
 import com.library.domain.dao.BookRentDao;
 import com.library.domain.dao.ReaderDao;
@@ -14,4 +15,12 @@ public class DbService {
     ReaderDao readerDao;
     @Autowired
     BookRentDao bookRentDao;
+
+    public void addBook(final Book book) {
+        bookDao.save(book);
+    }
+
+    public void deleteBook(final int id) {
+        bookDao.deleteById((id));
+    }
 }

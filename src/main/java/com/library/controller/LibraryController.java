@@ -15,16 +15,16 @@ public class LibraryController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteBook")
-    public void removeBook(@RequestParam Long titleId) {
+    public void removeBook(@RequestParam int titleId) {
 
     }
     @RequestMapping(method = RequestMethod.POST, value = "addBookCopy")
-    public void addBookCopy(@RequestParam Long titleId) {
+    public void addBookCopy(@RequestParam int titleId) {
 
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteBookCopy")
-    public void removeBookCopy(@RequestParam Long bookId) {
+    public void removeBookCopy(@RequestParam int bookId) {
 
     }
 

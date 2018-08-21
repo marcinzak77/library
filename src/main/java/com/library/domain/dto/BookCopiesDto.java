@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookCopiesDto {
-    private long titleId;
+    private int titleId;
     private String bookStatus;
 }

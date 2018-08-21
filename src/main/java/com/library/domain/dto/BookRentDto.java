@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReaderDto {
-    private String name;
-    private String surname;
+public class BookRentDto {
+    private long bookId;
+    private long readerId;
+    private LocalDate dateOfRental;
 }

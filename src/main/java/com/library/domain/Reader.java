@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Getter
 @AllArgsConstructor
@@ -22,9 +23,9 @@ public class Reader {
     @Column(name = "ACCOUNT_CREATION_DATE")
     private LocalDate accountCreationDate;
 
-    public Reader(String name, String surname, LocalDate accountCreationDate) {
+    public Reader(String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.accountCreationDate = accountCreationDate;
+        this.accountCreationDate = LocalDate.now();
     }
 }

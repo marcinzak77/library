@@ -1,7 +1,7 @@
 package com.library.domain;
 
 import com.library.domain.dao.BookDao;
-import com.library.domain.dao.BookHireDao;
+import com.library.domain.dao.BookRentDao;
 import com.library.domain.dao.BookCopiesDao;
 import com.library.domain.dao.ReaderDao;
 import org.junit.Test;
@@ -24,7 +24,7 @@ public class LibraryDaoTestSuite {
     @Autowired
     BookDao bookDao;
     @Autowired
-    BookHireDao bookHireDao;
+    BookRentDao bookRentDao;
     @Autowired
     BookCopiesDao bookCopiesDao;
     @Autowired

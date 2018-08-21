@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "BOOKHIRE")
-public class BookHire {
+public class BookRent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long hireId;
@@ -25,7 +25,7 @@ public class BookHire {
     @Column(name = "DATE_OF_RETURN")
     private LocalDate dateOfReturn;
 
-    public BookHire(long bookId, long readerId, LocalDate dateOfRental) {
+    public BookRent(long bookId, long readerId, LocalDate dateOfRental) {
         this.bookId = bookId;
         this.readerId = readerId;
         this.dateOfRental = dateOfRental;

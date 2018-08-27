@@ -1,4 +1,4 @@
-package com.library.domain;
+package com.library.domain.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,20 +12,20 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "BOOKHIRE")
-public class BookRent {
+public class Entry {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long hireId;
+    private int hireId;
     @Column(name = "BOOK_ID")
-    private long bookId;
+    private int bookId;
     @Column(name = "READER_ID")
-    private long readerId;
+    private int readerId;
     @Column(name = "DATE_OF_RENTAL")
     private LocalDate dateOfRental;
     @Column(name = "DATE_OF_RETURN")
     private LocalDate dateOfReturn;
 
-    public BookRent(int bookId, int readerId, LocalDate dateOfRental) {
+    public Entry(int bookId, int readerId, LocalDate dateOfRental) {
         this.bookId = bookId;
         this.readerId = readerId;
         this.dateOfRental = dateOfRental;

@@ -1,25 +1,29 @@
 package com.library.service;
 
-import com.library.domain.Book;
-import com.library.domain.BookCopies;
-import com.library.domain.Reader;
-import com.library.domain.dao.BookCopiesDao;
+import com.library.domain.entities.Book;
+import com.library.domain.entities.Item;
+import com.library.domain.entities.Reader;
+import com.library.domain.dao.ItemDao;
 import com.library.domain.dao.BookDao;
 import com.library.domain.dao.BookRentDao;
 import com.library.domain.dao.ReaderDao;
+import com.library.mapper.LibraryMapper;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Service
+@RequiredArgsConstructor
 public class DbService {
-    @Autowired
-    BookDao bookDao;
-    @Autowired
-    BookCopiesDao bookCopiesDao;
-    @Autowired
-    ReaderDao readerDao;
-    @Autowired
-    BookRentDao bookRentDao;
+    private final BookDao bookDao;
+    private final ItemDao itemDao;
+    private final ReaderDao readerDao;
+    private final BookRentDao bookRentDao;
 
     public void addBook(final Book book) {
         bookDao.save(book);
@@ -30,12 +34,12 @@ public class DbService {
     }
 
     public void addBookCopy(final int titleId) {
-        BookCopies bookCopies = new BookCopies(titleId, "AVAILABLE");
-        bookCopiesDao.save(bookCopies);
+        Item item = new Item(titleId, "AVAILABLE");
+        itemDao.save(item);
     }
 
     public void deleteBookCopy(final int bookId) {
-        bookCopiesDao.deleteById(bookId);
+        itemDao.deleteById(bookId);
     }
 
     public void createNewReader(final Reader reader) {
@@ -43,7 +47,14 @@ public class DbService {
     }
 
     public Book findBook(final String bookTitle) {
-        return null;
+        List<Book> bookList = new ArrayList<>();
+        bookDao.findAll().forEach(book -> bookList.add(book));
+        for (Book findedBook: bookList) {
+            if (findedBook.getTitle().equalsIgnoreCase(bookTitle)) {
+                return findedBook;
+            }
+        }
+        return new Book();
     }
 
     public void rentABook(final int bookId) {

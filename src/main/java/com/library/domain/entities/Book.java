@@ -1,4 +1,4 @@
-package com.library.domain;
+package com.library.domain.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,12 +23,12 @@ public class Book {
     private int releaseDate;
 
     @OneToMany(
-            targetEntity = BookCopies.class,
+            targetEntity = Item.class,
             mappedBy = "titleId",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    private List<BookCopies> bookCopies;
+    private List<Item> bookCopies;
 
     public Book(String author, String title, int releaseDate) {
         this.author = author;
@@ -36,11 +36,11 @@ public class Book {
         this.releaseDate = releaseDate;
     }
 
-    public void setBookCopies(List<BookCopies> bookCopies) {
+    public void setBookCopies(List<Item> bookCopies) {
         this.bookCopies = bookCopies;
     }
 
-    public List<BookCopies> getBookCopies() {
+    public List<Item> getBookCopies() {
         return bookCopies;
     }
 

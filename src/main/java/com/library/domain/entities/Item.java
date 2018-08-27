@@ -1,4 +1,4 @@
-package com.library.domain;
+package com.library.domain.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,8 +8,9 @@ import javax.persistence.*;
 
 @Getter
 @AllArgsConstructor
-@Entity(name = "BOOKCOPIES")
-public class BookCopies {
+@NoArgsConstructor
+@Entity(name = "ITEM")
+public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int bookId;
@@ -17,10 +18,7 @@ public class BookCopies {
     @Column(name = "BOOK_STATUS")
     private String bookStatus;
 
-    public BookCopies() {
-    }
-
-    public BookCopies(int titleId, String bookStatus) {
+    public Item(int titleId, String bookStatus) {
         this.titleId = titleId;
         this.bookStatus = bookStatus;
     }
@@ -32,9 +30,5 @@ public class BookCopies {
     @JoinColumn(name = "TITLE_ID")
     public int getTitleId() {
         return titleId;
-    }
-
-    public int getBookId() {
-        return bookId;
     }
 }

@@ -2,8 +2,10 @@ package com.library.domain;
 
 import com.library.domain.dao.BookDao;
 import com.library.domain.dao.BookRentDao;
-import com.library.domain.dao.BookCopiesDao;
+import com.library.domain.dao.ItemDao;
 import com.library.domain.dao.ReaderDao;
+import com.library.domain.entities.Book;
+import com.library.domain.entities.Item;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,28 +28,28 @@ public class LibraryDaoTestSuite {
     @Autowired
     BookRentDao bookRentDao;
     @Autowired
-    BookCopiesDao bookCopiesDao;
+    ItemDao itemDao;
     @Autowired
     ReaderDao readerDao;
 
     @Test
     @Transactional
-    public void testAddBookWithTheeCopies() {
+    public void testAddBookWithThreeCopies() {
         //Given
         Book bookTitleOne = new Book("Title 1", "Author 1", 2000);
-        BookCopies bookCopyOne = new BookCopies(1, "AVAILABLE");
-        BookCopies bookCopyTwo = new BookCopies(1, "AVAILABLE");
-        BookCopies bookCopyThree = new BookCopies(1, "RENTED");
-        List<BookCopies> bookCopies = new ArrayList<>(Arrays.asList(bookCopyOne, bookCopyTwo, bookCopyThree));
+        Item bookCopyOne = new Item(1, "AVAILABLE");
+        Item bookCopyTwo = new Item(1, "AVAILABLE");
+        Item bookCopyThree = new Item(1, "RENTED");
+        List<Item> bookCopies = new ArrayList<>(Arrays.asList(bookCopyOne, bookCopyTwo, bookCopyThree));
         bookTitleOne.setBookCopies(bookCopies);
         //When
         bookDao.save(bookTitleOne);
         int idBookOne = bookTitleOne.getTitleId();
-        bookCopiesDao.save(bookCopyOne);
+        itemDao.save(bookCopyOne);
         int bookCopiesIdOne = (int) bookCopyOne.getBookId();
-        bookCopiesDao.save(bookCopyTwo);
+        itemDao.save(bookCopyTwo);
         int bookCopiesIdTwo = (int) bookCopyTwo.getBookId();
-        bookCopiesDao.save(bookCopyThree);
+        itemDao.save(bookCopyThree);
         int bookCopiesIdThree = (int) bookCopyThree.getBookId();
         System.out.println(idBookOne);
         int result = bookTitleOne.getBookCopies().size();
@@ -56,9 +58,9 @@ public class LibraryDaoTestSuite {
 
         //Cleanup
         try {
-            bookCopiesDao.deleteById(bookCopiesIdOne);
-            bookCopiesDao.deleteById(bookCopiesIdTwo);
-            bookCopiesDao.deleteById(bookCopiesIdThree);
+            itemDao.deleteById(bookCopiesIdOne);
+            itemDao.deleteById(bookCopiesIdTwo);
+            itemDao.deleteById(bookCopiesIdThree);
             bookDao.deleteById(idBookOne);
         } catch (Exception e) {
             //do nothing

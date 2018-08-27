@@ -6,6 +6,8 @@ import com.library.domain.dto.BookDto;
 import com.library.domain.dto.ReaderDto;
 import com.library.mapper.LibraryMapper;
 import com.library.service.DbService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,14 +28,14 @@ public class LibraryController {
         dbService.deleteBook(titleId);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "addBookCopy")
+    @RequestMapping(method = RequestMethod.POST, value = "addItem")
     public void addBookCopy(@RequestParam int titleId) {
-        dbService.addBookCopy(titleId);
+        dbService.addItem(titleId);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "deleteBookCopy")
+    @RequestMapping(method = RequestMethod.DELETE, value = "deleteItem")
     public void removeBookCopy(@RequestParam int bookId) {
-        dbService.deleteBookCopy(bookId);
+        dbService.deleteItem(bookId);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createUser")

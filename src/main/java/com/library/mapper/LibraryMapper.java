@@ -10,6 +10,12 @@ import com.library.domain.entities.Item;
 import com.library.domain.entities.Reader;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.stream.Collectors;
+
 @Component
 public class LibraryMapper {
     public Book mapToBook(final BookDto bookDto) {
@@ -24,7 +30,8 @@ public class LibraryMapper {
                 book.getTitleId(),
                 book.getAuthor(),
                 book.getTitle(),
-                book.getReleaseDate());
+                book.getReleaseDate(),
+                mapToItemDtoList(book.getItemList()));
     }
 
     public Item mapToItem(final ItemDto itemDto) {
@@ -33,10 +40,14 @@ public class LibraryMapper {
                 itemDto.getBookStatus());
     }
 
-    public ItemDto mapToItem(final Item item) {
+    public ItemDto mapToItemDto(final Item item) {
         return new ItemDto(
                 item.getTitleId(),
                 item.getBookStatus());
+    }
+
+    public List<ItemDto> mapToItemDtoList(final List<Item> itemList) {
+        return itemList.stream().map(item -> mapToItemDto(item)).collect(Collectors.toList());
     }
 
     public Entry mapToEntry(final EntryDto entryDto) {
@@ -48,9 +59,11 @@ public class LibraryMapper {
 
     public EntryDto mapToEntryDto(final Entry entry) {
         return new EntryDto(
+                entry.getEntryId(),
                 entry.getBookId(),
                 entry.getReaderId(),
-                entry.getDateOfRental());
+                entry.getDateOfRental(),
+                entry.getDateOfReturn());
     }
 
     public Reader mapToReader(final ReaderDto readerDto) {

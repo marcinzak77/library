@@ -5,7 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static com.library.domain.entities.Item.AVAIL;
 
 @Getter
 @AllArgsConstructor
@@ -28,7 +32,7 @@ public class Book {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    private List<Item> bookCopies;
+    private List<Item> itemList;
 
     public Book(String author, String title, int releaseDate) {
         this.author = author;
@@ -36,12 +40,12 @@ public class Book {
         this.releaseDate = releaseDate;
     }
 
-    public void setBookCopies(List<Item> bookCopies) {
-        this.bookCopies = bookCopies;
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
     }
 
-    public List<Item> getBookCopies() {
-        return bookCopies;
+    public List<Item> getItemList() {
+        return itemList;
     }
 
     public int getTitleId() {

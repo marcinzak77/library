@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Entry {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int hireId;
+    private int entryId;
     @Column(name = "BOOK_ID")
     private int bookId;
     @Column(name = "READER_ID")

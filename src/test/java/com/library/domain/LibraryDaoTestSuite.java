@@ -41,7 +41,7 @@ public class LibraryDaoTestSuite {
         Item bookCopyTwo = new Item(1, "AVAILABLE");
         Item bookCopyThree = new Item(1, "RENTED");
         List<Item> bookCopies = new ArrayList<>(Arrays.asList(bookCopyOne, bookCopyTwo, bookCopyThree));
-        bookTitleOne.setBookCopies(bookCopies);
+        bookTitleOne.setItemList(bookCopies);
         //When
         bookDao.save(bookTitleOne);
         int idBookOne = bookTitleOne.getTitleId();
@@ -52,7 +52,7 @@ public class LibraryDaoTestSuite {
         itemDao.save(bookCopyThree);
         int bookCopiesIdThree = (int) bookCopyThree.getBookId();
         System.out.println(idBookOne);
-        int result = bookTitleOne.getBookCopies().size();
+        int result = bookTitleOne.getItemList().size();
         //Then
         assertEquals(result, 3);
 

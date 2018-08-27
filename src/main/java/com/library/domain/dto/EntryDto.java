@@ -10,7 +10,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EntryDto {
+    private int entryId;
     private int bookId;
     private int readerId;
     private LocalDate dateOfRental;
+    private LocalDate dateOfReturn;
 }

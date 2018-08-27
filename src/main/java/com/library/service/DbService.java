@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.library.domain.entities.Item.AVAIL;
+
 @Service
 @RequiredArgsConstructor
 public class DbService {
@@ -27,18 +29,19 @@ public class DbService {
 
     public void addBook(final Book book) {
         bookDao.save(book);
+        addItem(book.getTitleId());
     }
 
     public void deleteBook(final int id) {
         bookDao.deleteById((id));
     }
 
-    public void addBookCopy(final int titleId) {
-        Item item = new Item(titleId, "AVAILABLE");
+    public void addItem(final int titleId) {
+        Item item = new Item(titleId, AVAIL);
         itemDao.save(item);
     }
 
-    public void deleteBookCopy(final int bookId) {
+    public void deleteItem(final int bookId) {
         itemDao.deleteById(bookId);
     }
 
@@ -49,7 +52,7 @@ public class DbService {
     public Book findBook(final String bookTitle) {
         List<Book> bookList = new ArrayList<>();
         bookDao.findAll().forEach(book -> bookList.add(book));
-        for (Book findedBook: bookList) {
+        for (Book findedBook : bookList) {
             if (findedBook.getTitle().equalsIgnoreCase(bookTitle)) {
                 return findedBook;
             }

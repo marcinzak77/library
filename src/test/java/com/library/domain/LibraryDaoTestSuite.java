@@ -1,7 +1,7 @@
 package com.library.domain;
 
 import com.library.domain.dao.BookDao;
-import com.library.domain.dao.BookRentDao;
+import com.library.domain.dao.EntryDao;
 import com.library.domain.dao.ItemDao;
 import com.library.domain.dao.ReaderDao;
 import com.library.domain.entities.Book;
@@ -29,7 +29,7 @@ public class LibraryDaoTestSuite {
     @Autowired
     BookDao bookDao;
     @Autowired
-    BookRentDao bookRentDao;
+    EntryDao entryDao;
     @Autowired
     ItemDao itemDao;
     @Autowired

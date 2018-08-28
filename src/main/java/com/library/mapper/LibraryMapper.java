@@ -53,9 +53,11 @@ public class LibraryMapper {
 
     public Entry mapToEntry(final EntryDto entryDto) {
         return new Entry(
+                entryDto.getEntryId(),
                 entryDto.getBookId(),
                 entryDto.getReaderId(),
-                entryDto.getDateOfRental());
+                entryDto.getDateOfRental(),
+                entryDto.getDateOfReturn());
     }
 
     public EntryDto mapToEntryDto(final Entry entry) {

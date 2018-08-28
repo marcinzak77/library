@@ -61,13 +61,13 @@ public class LibraryController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "borrow")
-    public Item borrowBook(@RequestParam EntryDto entryDto) throws NotFoundException {
-        return dbService.borrowBook(libraryMapper.mapToEntry(entryDto));
+    public Item borrowBook(@RequestParam int bookId, @RequestParam int readerId) throws NotFoundException {
+        return dbService.borrowBook(bookId, readerId);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "return")
-    public Item returnBook(@RequestParam EntryDto entryDto) throws NotFoundException {
-        return dbService.returnBook(libraryMapper.mapToEntry(entryDto));
+    public Item returnBook(@RequestParam int bookId) throws NotFoundException {
+        return dbService.returnBook(bookId);
     }
 
 }

@@ -30,4 +30,8 @@ public class Entry {
         this.readerId = readerId;
         this.dateOfRental = LocalDate.now();
     }
+
+    public void setDateOfReturn(LocalDate dateOfReturn) {
+        this.dateOfReturn = dateOfReturn;
+    }
 }

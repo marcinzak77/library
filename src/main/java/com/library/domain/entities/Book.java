@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import static com.library.domain.entities.Item.AVAIL;
 
@@ -50,5 +51,20 @@ public class Book {
 
     public int getTitleId() {
         return titleId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return releaseDate == book.releaseDate &&
+                Objects.equals(author, book.author) &&
+                Objects.equals(title, book.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(author, title, releaseDate);
     }
 }

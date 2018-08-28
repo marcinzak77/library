@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemDto {
+    private int bookId;
     private int titleId;
     private String bookStatus;
 }

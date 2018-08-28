@@ -42,6 +42,7 @@ public class LibraryMapper {
 
     public ItemDto mapToItemDto(final Item item) {
         return new ItemDto(
+                item.getBookId(),
                 item.getTitleId(),
                 item.getBookStatus());
     }

@@ -1,23 +1,21 @@
 package com.library.service;
 
+import com.library.controller.NotFoundException;
 import com.library.domain.entities.Book;
+import com.library.domain.entities.Entry;
 import com.library.domain.entities.Item;
 import com.library.domain.entities.Reader;
 import com.library.domain.dao.ItemDao;
 import com.library.domain.dao.BookDao;
 import com.library.domain.dao.BookRentDao;
 import com.library.domain.dao.ReaderDao;
-import com.library.mapper.LibraryMapper;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.library.domain.entities.Item.AVAIL;
+import static com.library.domain.entities.Item.NOTAVAIL;
 
 @Service
 @RequiredArgsConstructor
@@ -45,13 +43,12 @@ public class DbService {
         itemDao.deleteById(bookId);
     }
 
-    public void createNewReader(final Reader reader) {
-        readerDao.save(reader);
+    public Reader saveReader(final Reader reader) {
+        return readerDao.save(reader);
     }
 
     public Book findBook(final String bookTitle) {
-        List<Book> bookList = new ArrayList<>();
-        bookDao.findAll().forEach(book -> bookList.add(book));
+        List<Book> bookList = bookDao.findAll();
         for (Book findedBook : bookList) {
             if (findedBook.getTitle().equalsIgnoreCase(bookTitle)) {
                 return findedBook;
@@ -60,11 +57,26 @@ public class DbService {
         return new Book();
     }
 
-    public void rentABook(final int bookId) {
+    public List<Book> getAllBooks() {
+        return bookDao.findAll();
+    }
+
+    public Item borrowBook(final Entry entry) throws NotFoundException{
+        Reader reader = readerDao.findById(entry.getReaderId()).orElseThrow(NotFoundException::new);
+        Item item = itemDao.findById(entry.getBookId()).orElseThrow(NotFoundException::new);
+        reader.getBorrowedBooks().add(item);
+        item.setBookStatus(NOTAVAIL);
+        readerDao.save(reader);
+        return itemDao.save(item);
 
     }
 
-    public void returnABook(final int bookId) {
-
+    public Item returnBook(final Entry entry) throws NotFoundException{
+        Reader reader = readerDao.findById(entry.getReaderId()).orElseThrow(NotFoundException::new);
+        Item item = itemDao.findById(entry.getBookId()).orElseThrow(NotFoundException::new);
+        reader.getBorrowedBooks().remove(item);
+        item.setBookStatus(AVAIL);
+        readerDao.save(reader);
+        return itemDao.save(item);
     }
 }

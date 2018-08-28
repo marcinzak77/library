@@ -1,15 +1,17 @@
 package com.library.controller;
 
 import com.library.domain.dto.EntryDto;
-import com.library.domain.dto.ItemDto;
 import com.library.domain.dto.BookDto;
 import com.library.domain.dto.ReaderDto;
+import com.library.domain.entities.Book;
+import com.library.domain.entities.Item;
+import com.library.domain.entities.Reader;
 import com.library.mapper.LibraryMapper;
 import com.library.service.DbService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,8 +26,13 @@ public class LibraryController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteBook")
-    public void removeBook(@RequestParam int titleId) {
+    public void deleteBook(@RequestParam int titleId) {
         dbService.deleteBook(titleId);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "getBooks")
+    public List<Book> getAllBooks() {
+        return dbService.getAllBooks();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "addItem")
@@ -40,7 +47,12 @@ public class LibraryController {
 
     @RequestMapping(method = RequestMethod.POST, value = "createUser")
     public void createNewReader(@RequestBody ReaderDto readerDto) {
-        dbService.createNewReader(libraryMapper.mapToReader(readerDto));
+        dbService.saveReader(libraryMapper.mapToReader(readerDto));
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "updateUser")
+    public Reader updateReader(@RequestBody ReaderDto readerDto) {
+        return dbService.saveReader(libraryMapper.mapToReader(readerDto));
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "findBookTitle")
@@ -48,14 +60,14 @@ public class LibraryController {
         return libraryMapper.mapToBookDto(dbService.findBook(bookTitle));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "rentBook")
-    public void rentABook(@RequestParam EntryDto entryDto) {
-        dbService.rentABook(libraryMapper.mapToEntry(entryDto).getBookId());
+    @RequestMapping(method = RequestMethod.PUT, value = "borrow")
+    public Item borrowBook(@RequestParam EntryDto entryDto) throws NotFoundException {
+        return dbService.borrowBook(libraryMapper.mapToEntry(entryDto));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "returnBook")
-    public void returnABook(ReaderDto readerDto, ItemDto itemDto) {
-
+    @RequestMapping(method = RequestMethod.PUT, value = "return")
+    public Item returnBook(@RequestParam EntryDto entryDto) throws NotFoundException {
+        return dbService.returnBook(libraryMapper.mapToEntry(entryDto));
     }
 
 }

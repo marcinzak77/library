@@ -18,6 +18,7 @@ public class Item {
     @Column(name = "BOOK_STATUS")
     private String bookStatus;
     public static final String AVAIL = "AVAILABLE";
+    public static final String NOTAVAIL = "NOT AVAILABLE";
 
     public Item(int titleId, String bookStatus) {
         this.titleId = titleId;
@@ -26,6 +27,12 @@ public class Item {
 
     public void setBookStatus(String bookStatus) {
         this.bookStatus = bookStatus;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "BOOK_ID")
+    public int getBookId() {
+        return bookId;
     }
 
     @ManyToOne

@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -21,6 +23,13 @@ public class Reader {
     private String surname;
     @Column(name = "ACCOUNT_CREATION_DATE")
     private LocalDate accountCreationDate;
+    @OneToMany(
+            targetEntity = Item.class,
+            mappedBy = "bookId",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    private List<Item> borrowedBooks;
 
     public Reader(String name, String surname) {
         this.name = name;

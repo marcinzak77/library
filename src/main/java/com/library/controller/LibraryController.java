@@ -20,20 +20,6 @@ public class LibraryController {
     private final DbService dbService;
     private final LibraryMapper libraryMapper;
 
-    @RequestMapping(method = RequestMethod.POST, value = "addBook")
-    public void addBook(@RequestBody BookDto bookDto) {
-        dbService.addBook(libraryMapper.mapToBook(bookDto));
-    }
-
-    @RequestMapping(method = RequestMethod.DELETE, value = "deleteBook")
-    public void deleteBook(@RequestParam int titleId) {
-        dbService.deleteBook(titleId);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "getBooks")
-    public List<Book> getAllBooks() {
-        return dbService.getAllBooks();
-    }
 
     @RequestMapping(method = RequestMethod.POST, value = "addItem")
     public void addBookCopy(@RequestParam int titleId) {

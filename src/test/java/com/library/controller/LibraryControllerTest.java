@@ -1,6 +1,7 @@
 package com.library.controller;
 
 import com.google.gson.Gson;
+import com.library.domain.dto.BookDto;
 import com.library.domain.entities.Book;
 import com.library.mapper.LibraryMapper;
 import com.library.service.DbService;
@@ -19,7 +20,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(LibraryController.class)
+@WebMvcTest(BookController.class)
 public class LibraryControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -31,10 +32,10 @@ public class LibraryControllerTest {
     @Test
     public void shouldAddBook() throws Exception {
         //Given
-        Book book = new Book(1,"test author", "test title", 2008, new ArrayList<>());
+        BookDto bookDto = new BookDto(1,"test author", "test title", 2008, new ArrayList<>());
 
         Gson gson = new Gson();
-        String jsonContent = gson.toJson(libraryMapper.mapToBookDto(book));
+        String jsonContent = gson.toJson(bookDto);
 
         //When&Then
         mockMvc.perform(post("/library/addBook").contentType(MediaType.APPLICATION_JSON)

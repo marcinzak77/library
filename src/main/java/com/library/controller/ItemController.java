@@ -1,26 +1,24 @@
 package com.library.controller;
 
-import com.library.service.DbItem;
+import com.library.service.ItemService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping
+@CrossOrigin(origins = "*")
 public class ItemController {
-    private final DbItem dbItem;
+    private final ItemService itemService;
 
     @RequestMapping(method = RequestMethod.POST, value = "addItem")
     public void addBookCopy(@RequestParam int titleId) {
-        dbItem.addItem(titleId);
+        itemService.addItem(titleId);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteItem")
     public void removeBookCopy(@RequestParam int bookId) {
-        dbItem.deleteItem(bookId);
+        itemService.deleteItem(bookId);
     }
 
 }

@@ -9,15 +9,15 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class DbBook {
+public class BookService {
     private final BookDao bookDao;
-    private final DbItem dbItem;
+    private final ItemService itemService;
 
     public void addBook(final Book book) {
         if (!findBook(book.getTitle()).equals(book)) {
             bookDao.save(book);
         }
-        dbItem.addItem(findBook(book.getTitle()).getTitleId());
+        itemService.addItem(findBook(book.getTitle()).getTitleId());
     }
 
     public void deleteBook(final int id) {

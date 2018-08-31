@@ -17,7 +17,7 @@ import static com.library.domain.entities.Item.NOTAVAIL;
 
 @Service
 @RequiredArgsConstructor
-public class DbRent {
+public class RentService {
     private final ItemDao itemDao;
     private final ReaderDao readerDao;
     private final EntryDao entryDao;

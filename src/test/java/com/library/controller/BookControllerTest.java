@@ -3,7 +3,7 @@ package com.library.controller;
 import com.google.gson.Gson;
 import com.library.domain.dto.BookDto;
 import com.library.mapper.LibraryMapper;
-import com.library.service.DbBook;
+import com.library.service.BookService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class BookControllerTest {
     @MockBean
     private LibraryMapper libraryMapper;
     @MockBean
-    private DbBook dbBook;
+    private BookService bookService;
 
     @Test
     public void shouldAddBook() throws Exception {

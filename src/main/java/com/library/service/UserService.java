@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class DbUser {
+public class UserService {
     private final ReaderDao readerDao;
 
     public Reader saveReader(final Reader reader) {

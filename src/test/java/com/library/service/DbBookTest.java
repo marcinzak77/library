@@ -11,24 +11,24 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DbServiceTest {
+public class DbBookTest {
 
     @Autowired
-    private DbService dbService;
+    private DbBook dbBook;
     @Test
     public void shouldAddABook() {
         //Given
         Book book = new Book("My author", "My Title", 1999);
 
         //When
-        dbService.addBook(book);
+        dbBook.addBook(book);
         int id = book.getTitleId();
-        String results = dbService.findBook("My Title").getTitle();
+        String results = dbBook.findBook("My Title").getTitle();
         //Then
         assertEquals("My Title", results);
         //Clean-up
         try {
-            dbService.deleteBook(id);
+            dbBook.deleteBook(id);
         } catch (Exception e) {
             //do nothing
         }

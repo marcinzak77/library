@@ -2,9 +2,8 @@ package com.library.controller;
 
 import com.google.gson.Gson;
 import com.library.domain.dto.BookDto;
-import com.library.domain.entities.Book;
 import com.library.mapper.LibraryMapper;
-import com.library.service.DbService;
+import com.library.service.DbBook;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +20,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BookController.class)
-public class LibraryControllerTest {
+public class BookControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
     private LibraryMapper libraryMapper;
     @MockBean
-    private DbService dbService;
+    private DbBook dbBook;
 
     @Test
     public void shouldAddBook() throws Exception {

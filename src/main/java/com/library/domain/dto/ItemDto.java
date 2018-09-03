@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ItemDto {
     private int bookId;
-    private int titleId;
+    private int bookTitleId;
     private String bookStatus;
 }

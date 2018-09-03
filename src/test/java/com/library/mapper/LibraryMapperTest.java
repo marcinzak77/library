@@ -29,7 +29,7 @@ public class LibraryMapperTest {
         List<ItemDto> itemDtos = libraryMapper.mapToItemDtoList(items);
         //Then
         assertEquals(1, itemDtos.size());
-        assertEquals(1, itemDtos.get(0).getTitleId());
+        assertEquals(1, itemDtos.get(0).getBookTitleId());
         assertEquals(AVAIL, itemDtos.get(0).getBookStatus());
     }
 

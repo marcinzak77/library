@@ -7,6 +7,8 @@ import com.library.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/library")
@@ -23,5 +25,10 @@ public class UserController {
     @RequestMapping(method = RequestMethod.PUT, value = "updateUser")
     public Reader updateReader(@RequestBody ReaderDto readerDto) {
         return userService.saveReader(userMapper.mapToReader(readerDto));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "getUsers")
+    public List<Reader> getReaders() {
+        return userService.getReaders();
     }
 }

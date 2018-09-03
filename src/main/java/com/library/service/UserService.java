@@ -5,6 +5,8 @@ import com.library.domain.entities.Reader;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -12,6 +14,10 @@ public class UserService {
 
     public Reader saveReader(final Reader reader) {
         return readerDao.save(reader);
+    }
+
+    public List<Reader> getReaders() {
+        return readerDao.findAll();
     }
 
 }

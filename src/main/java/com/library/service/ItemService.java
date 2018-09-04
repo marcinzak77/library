@@ -11,7 +11,6 @@ import static com.library.domain.entities.Item.AVAIL;
 @Service
 @RequiredArgsConstructor
 public class ItemService {
-    private final BookDao bookDao;
     private final ItemDao itemDao;
 
     public void addItem(final int titleId) {

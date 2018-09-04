@@ -17,17 +17,17 @@ public class UserController {
     private final UserService userService;
     private final UserMapper userMapper;
 
-    @RequestMapping(method = RequestMethod.POST, value = "createUser")
+    @PostMapping(value = "createUser")
     public void createNewReader(@RequestBody ReaderDto readerDto) {
         userService.saveReader(userMapper.mapToReader(readerDto));
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "updateUser")
+    @PutMapping(value = "updateUser")
     public Reader updateReader(@RequestBody ReaderDto readerDto) {
         return userService.saveReader(userMapper.mapToReader(readerDto));
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "getUsers")
+    @GetMapping(value = "getUsers")
     public List<Reader> getReaders() {
         return userService.getReaders();
     }

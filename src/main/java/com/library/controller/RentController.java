@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class RentController {
     private final RentService rentService;
 
-    @RequestMapping(method = RequestMethod.PUT, value = "borrow")
+    @PutMapping(value = "borrow")
     public Item borrowBook(@RequestParam int bookId, @RequestParam int readerId) throws DatabaseErrorException {
         return rentService.borrowBook(bookId, readerId);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "return")
+    @PutMapping(value = "return")
     public Item returnBook(@RequestParam int bookId) throws DatabaseErrorException {
         return rentService.returnBook(bookId);
     }

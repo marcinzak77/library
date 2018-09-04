@@ -41,14 +41,6 @@ public class Book {
         this.itemList = itemList;
     }
 
-//    public List<Item> getItemList() {
-//        return itemList;
-//    }
-//
-//    public int getTitleId() {
-//        return titleId;
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

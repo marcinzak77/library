@@ -13,11 +13,7 @@ import javax.persistence.*;
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @ManyToOne
-    @JoinColumn(name = "BOOK_ID")
     private int bookId;
-    @ManyToOne
-    @JoinColumn(name = "TITLE_ID")
     private int titleId;
     @Column(name = "BOOK_STATUS")
     private String bookStatus;
@@ -33,12 +29,15 @@ public class Item {
         this.bookStatus = bookStatus;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "BOOK_ID")
+    public int getBookId() {
+        return bookId;
+    }
 
-//    public int getBookId() {
-//        return bookId;
-//    }
-//
-//    public int getTitleId() {
-//        return titleId;
-//    }
+    @ManyToOne
+    @JoinColumn(name = "TITLE_ID")
+    public int getTitleId() {
+        return titleId;
+    }
 }

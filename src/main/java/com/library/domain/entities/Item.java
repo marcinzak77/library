@@ -13,11 +13,12 @@ import javax.persistence.*;
 public class Item {
     @Id
     @ManyToOne
+    @JoinColumn(name = "BOOK_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int bookId;
+    private Integer bookId;
     @ManyToOne
     @JoinColumn(name = "TITLE_ID")
-    private int titleId;
+    private Integer titleId;
     @Column(name = "BOOK_STATUS")
     private String bookStatus;
 

@@ -1,8 +1,11 @@
 package com.library.controller;
 
+import com.library.domain.entities.Item;
 import com.library.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +22,11 @@ public class ItemController {
     @DeleteMapping(value = "deleteItem")
     public void removeBookCopy(@RequestParam int bookId) {
         itemService.deleteItem(bookId);
+    }
+
+    @GetMapping(value = "getItems")
+    public List<Item> getAllItems() {
+        return itemService.getAllItems();
     }
 
 }

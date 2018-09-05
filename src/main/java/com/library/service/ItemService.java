@@ -6,6 +6,8 @@ import com.library.domain.entities.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static com.library.domain.entities.Item.AVAIL;
 
 @Service
@@ -20,5 +22,9 @@ public class ItemService {
 
     public void deleteItem(final int bookId) {
         itemDao.deleteById(bookId);
+    }
+
+    public List<Item> getAllItems() {
+        return itemDao.findAll();
     }
 }

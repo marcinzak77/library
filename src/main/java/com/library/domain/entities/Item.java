@@ -3,12 +3,14 @@ package com.library.domain.entities;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
 @Entity(name = "ITEM")
 public class Item {
     @Id

@@ -34,7 +34,6 @@ public class Item {
     public Item(int titleId, String bookStatus) {
         this.titleId = titleId;
         this.bookStatus = bookStatus;
-
     }
 
     public void setBookStatus(String bookStatus) {

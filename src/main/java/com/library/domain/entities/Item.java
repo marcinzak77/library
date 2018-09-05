@@ -12,9 +12,8 @@ import javax.persistence.*;
 @Entity(name = "ITEM")
 public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @ManyToOne
-    @JoinColumn(name = "BOOK_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int bookId;
     @ManyToOne
     @JoinColumn(name = "TITLE_ID")

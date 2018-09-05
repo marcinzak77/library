@@ -12,15 +12,19 @@ import javax.persistence.*;
 @Entity(name = "ITEM")
 public class Item {
     @Id
-    @ManyToOne
-    @JoinColumn(name = "BOOK_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer bookId;
-    @ManyToOne
-    @JoinColumn(name = "TITLE_ID")
-    private Integer titleId;
+    @Column(name = "BOOK_ID")
+    private int bookId;
+    @Column(name = "TITLE_ID")
+    private int titleId;
     @Column(name = "BOOK_STATUS")
     private String bookStatus;
+    @ManyToOne
+    @JoinColumn(name = "BOOK_TITLE_ID")
+    private Book book;
+    @ManyToOne
+    @JoinColumn(name = "READER_ID")
+    private Reader reader;
 
     public static final String AVAIL = "AVAILABLE";
     public static final String NOTAVAIL = "NOT AVAILABLE";
@@ -33,5 +37,4 @@ public class Item {
     public void setBookStatus(String bookStatus) {
         this.bookStatus = bookStatus;
     }
-
 }

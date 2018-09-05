@@ -24,7 +24,7 @@ public class Reader {
     private LocalDate accountCreationDate;
     @OneToMany(
             targetEntity = Item.class,
-            mappedBy = "bookId",
+            mappedBy = "reader",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )

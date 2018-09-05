@@ -25,7 +25,7 @@ public class Book {
 
     @OneToMany(
             targetEntity = Item.class,
-            mappedBy = "titleId",
+            mappedBy = "book",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )

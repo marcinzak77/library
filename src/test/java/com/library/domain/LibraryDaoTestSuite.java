@@ -49,11 +49,11 @@ public class LibraryDaoTestSuite {
         bookDao.save(bookTitleOne);
         int idBookOne = bookTitleOne.getTitleId();
         itemDao.save(bookCopyOne);
-        int bookCopiesIdOne = bookCopyOne.getItemId();
+        int bookCopiesIdOne = bookCopyOne.getBookId();
         itemDao.save(bookCopyTwo);
-        int bookCopiesIdTwo = bookCopyTwo.getItemId();
+        int bookCopiesIdTwo = bookCopyTwo.getBookId();
         itemDao.save(bookCopyThree);
-        int bookCopiesIdThree = bookCopyThree.getItemId();
+        int bookCopiesIdThree = bookCopyThree.getBookId();
         System.out.println(idBookOne);
         int result = bookTitleOne.getItemList().size();
         //Then

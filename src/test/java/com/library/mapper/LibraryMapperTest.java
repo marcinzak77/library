@@ -24,7 +24,7 @@ public class LibraryMapperTest {
     @Test
     public void shouldConvertItemListToDto() {
         //Given
-        List<Item> items = Arrays.asList(new Item(1, 1, AVAIL));
+        List<Item> items = Arrays.asList(new Item(1, AVAIL));
         //When
         List<ItemDto> itemDtos = libraryMapper.mapToItemDtoList(items);
         //Then
@@ -36,7 +36,7 @@ public class LibraryMapperTest {
     @Test
     public void shouldConvertToBookDto() {
         //Given
-        List<Item> items = Arrays.asList(new Item(1, 1, AVAIL));
+        List<Item> items = Arrays.asList(new Item(1, AVAIL));
         Book book = new Book(1, "title 1", "title 1",2005, items);
         //When
         BookDto bookDto = libraryMapper.mapToBookDto(book);

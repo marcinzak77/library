@@ -20,4 +20,8 @@ public class UserService {
         return readerDao.findAll();
     }
 
+    public void deleteReader(final int readerId) {
+        readerDao.deleteById(readerId);
+    }
+
 }

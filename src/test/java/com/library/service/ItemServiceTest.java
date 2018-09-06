@@ -1,7 +1,7 @@
 package com.library.service;
 
-import com.library.controller.DatabaseErrorException;
 import com.library.domain.entities.Book;
+import com.library.domain.entities.Item;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,23 +12,24 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BookServiceTest {
-
+public class ItemServiceTest {
+    @Autowired
+    private ItemService itemService;
     @Autowired
     private BookService bookService;
+
     @Test
-    public void shouldAddABook() throws DatabaseErrorException {
+    public void shouldAddBookItem() {
         //Given
         Book book = new Book("My author", "My Title", 1999);
-
-        //When
         bookService.addBook(book);
         int id = book.getTitleId();
-        String results = bookService.findBook("My Title").getTitle();
-        int bookItems = bookService.findBook("My Title").getItemList().size();
+        //When
+        itemService.addItem(id);
+        int results = bookService.findBook("My Title").getItemList().size();
         //Then
-        assertEquals("My Title", results);
-        assertEquals(1, bookItems);
+        assertEquals(2, results);
+
         //Clean-up
         try {
             bookService.deleteBook(id);
@@ -36,4 +37,5 @@ public class BookServiceTest {
             //do nothing
         }
     }
+
 }

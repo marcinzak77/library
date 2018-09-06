@@ -27,6 +27,7 @@ public class RentService {
         Item item = itemDao.findById(bookId).orElseThrow(DatabaseErrorException::new);
         reader.getBorrowedBooks().add(item);
         item.setBookStatus(NOTAVAIL);
+        item.setReader(reader);
         Entry entry = new Entry(bookId, readerId);
         entryDao.save(entry);
         readerDao.save(reader);
@@ -40,6 +41,7 @@ public class RentService {
         Item item = itemDao.findById(entry.getBookId()).orElseThrow(DatabaseErrorException::new);
         reader.getBorrowedBooks().remove(item);
         item.setBookStatus(AVAIL);
+        item.setReader(null);
         entry.setDateOfReturn(LocalDate.now());
         entryDao.save(entry);
         readerDao.save(reader);

@@ -1,5 +1,6 @@
 package com.library.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +22,11 @@ public class Item {
     private int titleId;
     @Column(name = "BOOK_STATUS")
     private String bookStatus;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "BOOK_TITLE_ID")
     private Book book;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "READER_ID")
     private Reader reader;

@@ -26,7 +26,7 @@ public class Reader {
             targetEntity = Item.class,
             mappedBy = "reader",
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            fetch = FetchType.EAGER
     )
     private List<Item> borrowedBooks;
 

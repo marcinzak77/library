@@ -14,13 +14,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.library.domain.entities.Item.AVAIL;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class LibraryMapperTest {
     @Autowired
     private LibraryMapper libraryMapper;
+
     @Test
     public void shouldConvertItemListToDto() {
         //Given
@@ -37,7 +38,7 @@ public class LibraryMapperTest {
     public void shouldConvertToBookDto() {
         //Given
         List<Item> items = Arrays.asList(new Item(1, AVAIL));
-        Book book = new Book(1, "title 1", "title 1",2005, items);
+        Book book = new Book(1, "title 1", "title 1", 2005, items);
         //When
         BookDto bookDto = libraryMapper.mapToBookDto(book);
         //Then

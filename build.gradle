@@ -30,7 +30,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-validation')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('com.google.code.gson:gson:2.8.2')
-   // compile('mysql:mysql-connector-java:8.0.11')
+    // compile('mysql:mysql-connector-java:8.0.11')
 
 
     compile('org.postgresql:postgresql')

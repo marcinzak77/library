@@ -14,6 +14,8 @@ import javax.persistence.*;
 @Setter
 @Entity(name = "ITEM")
 public class Item {
+    public static final String AVAIL = "AVAILABLE";
+    public static final String NOTAVAIL = "NOT AVAILABLE";
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "BOOK_ID")
@@ -30,9 +32,6 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "READER_ID")
     private Reader reader;
-
-    public static final String AVAIL = "AVAILABLE";
-    public static final String NOTAVAIL = "NOT AVAILABLE";
 
     public Item(int titleId, String bookStatus) {
         this.titleId = titleId;

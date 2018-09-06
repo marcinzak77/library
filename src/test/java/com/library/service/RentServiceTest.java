@@ -2,7 +2,6 @@ package com.library.service;
 
 import com.library.domain.entities.Book;
 import com.library.domain.entities.Reader;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.library.domain.entities.Item.AVAIL;
 import static com.library.domain.entities.Item.NOTAVAIL;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -80,8 +79,8 @@ public class RentServiceTest {
 
         //Clean-up
         try {
-          //  userService.deleteReader(readerId);
-          //  bookService.deleteBook(titleId);
+            //  userService.deleteReader(readerId);
+            //  bookService.deleteBook(titleId);
         } catch (Exception e) {
             // do nothing
         }

@@ -31,7 +31,7 @@ public class BookControllerTest {
     @Test
     public void shouldAddBook() throws Exception {
         //Given
-        BookDto bookDto = new BookDto(1,"test author", "test title", 2008, new ArrayList<>());
+        BookDto bookDto = new BookDto(1, "test author", "test title", 2008, new ArrayList<>());
 
         Gson gson = new Gson();
         String jsonContent = gson.toJson(bookDto);

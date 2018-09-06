@@ -71,7 +71,7 @@ public class LibraryDaoTestSuite {
     }
 
     @Test
-    public void shouldCreateUser(){
+    public void shouldCreateUser() {
         //Given
         Reader reader = new Reader("John", "Smith");
         //When

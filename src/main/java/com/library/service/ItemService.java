@@ -1,6 +1,5 @@
 package com.library.service;
 
-import com.library.controller.DatabaseErrorException;
 import com.library.domain.dao.BookDao;
 import com.library.domain.dao.ItemDao;
 import com.library.domain.entities.Book;
@@ -18,7 +17,7 @@ public class ItemService {
     private final ItemDao itemDao;
     private final BookDao bookDao;
 
-    public void addItem(final int titleId){
+    public void addItem(final int titleId) {
         Item item = new Item(titleId, AVAIL);
         Book book = bookDao.findById(titleId).orElse(null);
         if (book != null) {

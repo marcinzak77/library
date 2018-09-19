@@ -36,6 +36,4 @@ public class BookController {
     public BookDto findBookByTitle(@RequestParam String bookTitle) {
         return libraryMapper.mapToBookDto(bookService.findBook(bookTitle));
     }
-
-
 }

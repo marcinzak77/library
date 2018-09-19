@@ -23,5 +23,4 @@ public class UserService {
     public void deleteReader(final int readerId) {
         readerDao.deleteById(readerId);
     }
-
 }

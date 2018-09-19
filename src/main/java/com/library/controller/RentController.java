@@ -21,5 +21,4 @@ public class RentController {
     public Item returnBook(@RequestParam int bookId) throws DatabaseErrorException {
         return rentService.returnBook(bookId);
     }
-
 }

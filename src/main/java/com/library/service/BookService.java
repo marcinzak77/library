@@ -37,6 +37,4 @@ public class BookService {
     public List<Book> getAllBooks() {
         return bookDao.findAll();
     }
-
-
 }

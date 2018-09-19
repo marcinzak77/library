@@ -63,6 +63,4 @@ public class LibraryMapper {
                 entry.getDateOfRental(),
                 entry.getDateOfReturn());
     }
-
-
 }

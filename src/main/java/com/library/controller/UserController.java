@@ -31,4 +31,9 @@ public class UserController {
     public List<Reader> getReaders() {
         return userService.getReaders();
     }
+
+    @DeleteMapping(value = "deleteUser")
+    public void deleteReader(@RequestParam int readerId) {
+        userService.deleteReader(readerId);
+    }
 }
